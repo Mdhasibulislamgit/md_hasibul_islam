@@ -13,16 +13,16 @@ export function ExperienceCard({ experience, variant = 'default' }: ExperienceCa
       <Card className="group shadow-sm overflow-hidden bg-card/80 backdrop-blur-xl border border-border/50 hover:border-accent/30 transition-all duration-700 transform hover:-translate-y-4 rounded-3xl">
         <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
-        <CardHeader className="bg-gradient-to-r from-accent/10 to-primary/10 p-8 lg:p-12 relative z-10">
-          <div className="flex items-center gap-6">
-            <div className="p-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl border border-primary/30 backdrop-blur-sm">
-              <FileText className="h-8 w-8 lg:h-10 lg:w-10 text-primary flex-shrink-0" />
+        <CardHeader className="bg-gradient-to-r from-accent/10 to-primary/10 p-6 sm:p-8 lg:p-12 relative z-10">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+            <div className="p-3 sm:p-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl border border-primary/30 backdrop-blur-sm">
+              <FileText className="h-6 w-6 sm:h-8 sm:w-8 lg:h-10 lg:w-10 text-primary flex-shrink-0" />
             </div>
             <div className="flex-1">
-              <CardTitle className="text-2xl lg:text-4xl font-bold text-primary leading-tight mb-2">
+              <CardTitle className="text-lg sm:text-xl lg:text-2xl font-bold text-primary leading-tight mb-2">
                 My Recent Role
               </CardTitle>
-              <CardDescription className="text-lg lg:text-xl text-muted-foreground">
+              <CardDescription className="text-sm sm:text-base lg:text-lg text-muted-foreground">
                 At{" "}
                 <span className="font-semibold text-accent">
                   {experience.companyName}
@@ -36,8 +36,8 @@ export function ExperienceCard({ experience, variant = 'default' }: ExperienceCa
           </div>
         </CardHeader>
 
-        <CardContent className="p-8 lg:p-12 relative z-10">
-          <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed first-letter:text-3xl first-letter:font-bold first-letter:text-primary first-letter:mr-2 first-letter:float-left">
+        <CardContent className="p-6 sm:p-8 lg:p-12 relative z-10">
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed first-letter:text-xl sm:first-letter:text-2xl first-letter:font-bold first-letter:text-primary first-letter:mr-2 first-letter:float-left">
             {experience.description?.[0]
               ? `${
                   experience.description[0]

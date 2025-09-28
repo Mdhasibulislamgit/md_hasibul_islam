@@ -4,7 +4,7 @@ import { ArrowRight, Mail } from "lucide-react";
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-20 relative overflow-hidden">
+    <section id="contact" className="py-8 sm:py-12 lg:py-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-primary"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(255,255,255,0.1),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(255,255,255,0.05),transparent_50%)]"></div>
@@ -15,11 +15,11 @@ export function ContactSection() {
             <Mail className="h-12 w-12 lg:h-16 lg:w-16 text-white/90" />
           </div>
 
-          <h2 className="text-4xl lg:text-6xl font-black mb-6 text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 text-white">
             Let's Connect!
           </h2>
 
-          <p className="text-lg lg:text-xl mb-12 text-white/90 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg mb-8 sm:mb-12 text-white/90 max-w-3xl mx-auto leading-relaxed">
             Have a project in mind, a question, or just want to say hi? I'd
             love to hear from you. Feel free to reach out and let's create
             something amazing together!
@@ -30,7 +30,7 @@ export function ContactSection() {
           size="lg"
           variant="secondary"
           asChild
-          className="group bg-white/95 backdrop-blur-sm text-primary hover:bg-white hover:scale-105 shadow-sm hover:shadow-3xl transition-all duration-300 transform px-12 py-6 text-lg lg:text-xl font-bold rounded-2xl border-2 border-white/20"
+          className="group bg-white/95 backdrop-blur-sm text-primary hover:bg-white hover:scale-105 shadow-sm hover:shadow-3xl transition-all duration-300 transform px-8 sm:px-12 py-4 sm:py-6 text-base sm:text-lg lg:text-xl font-bold rounded-2xl border-2 border-white/20"
         >
           <Link href="/contact">
             Get In Touch

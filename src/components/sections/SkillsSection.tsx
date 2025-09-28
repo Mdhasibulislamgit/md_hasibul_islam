@@ -18,7 +18,7 @@ export function SkillsSection({ skills, maxSkills = 6 }: SkillsSectionProps) {
   }
 
   return (
-    <GradientBackground variant="primary" intensity="medium" className="py-20">
+    <GradientBackground variant="primary" intensity="medium" className="py-8 sm:py-12 lg:py-16">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionTitle 
           title="My Tech Arsenal" 
@@ -26,7 +26,7 @@ export function SkillsSection({ skills, maxSkills = 6 }: SkillsSectionProps) {
           subtitle="I'm proficient in a range of modern web technologies, always eager to learn and adapt. Here are some of the tools and technologies I love working with:"
         />
 
-        <div className="mb-16">
+        <div className="mb-8 sm:mb-12">
           <SkillGrid skills={displaySkills} columns={6} />
         </div>
 

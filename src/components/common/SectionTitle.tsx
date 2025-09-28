@@ -9,7 +9,7 @@ export function SectionTitle({
   children 
 }: SectionTitleProps) {
   return (
-    <div className={cn("flex items-center justify-center mb-16 relative group", className)}>
+    <div className={cn("flex items-center justify-center mb-6 sm:mb-8 lg:mb-12 relative group", className)}>
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent h-px top-1/2 transform -translate-y-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
       
       {Icon && (
@@ -19,14 +19,14 @@ export function SectionTitle({
       )}
       
       <div className="text-center">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black relative z-10">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black relative z-10">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-size-200 animate-gradient">
             {title}
           </span>
         </h2>
-        
+
         {subtitle && (
-          <p className="mt-4 text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {subtitle}
           </p>
         )}

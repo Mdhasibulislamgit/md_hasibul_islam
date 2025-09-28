@@ -15,7 +15,7 @@ export function AboutSection({ aboutData }: AboutSectionProps) {
   }
 
   return (
-    <GradientBackground variant="primary" intensity="light" className="py-20">
+    <GradientBackground variant="primary" intensity="light" className="py-8 sm:py-12 lg:py-16" id="about">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionTitle title="About Me" icon={User} />
 
@@ -28,10 +28,10 @@ export function AboutSection({ aboutData }: AboutSectionProps) {
                 <User className="h-8 w-8 text-primary" />
               </div>
               <div className="flex-1">
-                <CardTitle className="text-2xl lg:text-4xl font-bold text-foreground leading-tight mb-3">
+                <CardTitle className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground leading-tight mb-3">
                   A Little More About My Journey
                 </CardTitle>
-                <CardDescription className="text-lg lg:text-xl text-muted-foreground">
+                <CardDescription className="text-base sm:text-lg text-muted-foreground">
                   Developer, Designer, Dreamer.
                 </CardDescription>
               </div>
@@ -39,8 +39,8 @@ export function AboutSection({ aboutData }: AboutSectionProps) {
           </CardHeader>
 
           <CardContent className="p-8 lg:p-12 pt-0 relative z-10">
-            <div className="space-y-6 text-base lg:text-lg text-muted-foreground leading-relaxed">
-              <p className="first-letter:text-4xl first-letter:font-bold first-letter:text-primary first-letter:mr-2 first-letter:float-left first-letter:leading-none">
+            <div className="space-y-4 sm:space-y-6 text-sm sm:text-base text-muted-foreground leading-relaxed">
+              <p className="first-letter:text-2xl sm:first-letter:text-3xl first-letter:font-bold first-letter:text-primary first-letter:mr-2 first-letter:float-left first-letter:leading-none">
                 {aboutData.bioParagraphs?.[1] ||
                   "I'm a dedicated developer passionate about crafting impactful digital solutions and exploring new technologies. I thrive in collaborative environments, turning complex challenges into elegant, user-friendly experiences."}
               </p>
@@ -50,7 +50,7 @@ export function AboutSection({ aboutData }: AboutSectionProps) {
               </p>
             </div>
 
-            <div className="pt-8">
+            <div className="pt-6 sm:pt-8">
               <Button
                 asChild
                 variant="ghost"

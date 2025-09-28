@@ -1,7 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download, Sparkles, ChevronDown } from "lucide-react";
+import { ArrowRight, Download, Sparkles } from "lucide-react";
 import type { AboutData, CvInfo } from "@/types";
 
 interface HeroSectionProps {
@@ -44,10 +46,10 @@ export function HeroSection({ aboutData, cvInfo }: HeroSectionProps) {
         <div className="absolute bottom-1/3 right-1/4 w-2 h-2 bg-primary/15 rounded-full animate-float-delayed"></div>
       </div>
 
-      <div className="container mx-auto max-w-7xl text-center z-10 px-4 sm:px-6 lg:px-8 h-full flex items-center">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center w-full">
+      <div className="container mx-auto max-w-7xl text-center z-10 px-4 sm:px-6 lg:px-8 w-full h-full flex items-center">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 xl:gap-12 items-center w-full">
           {/* Text Content */}
-          <div className="lg:text-left space-y-4 order-2 lg:order-1 opacity-0 animate-fadeInLeft">
+          <div className="lg:text-left space-y-3 sm:space-y-4 order-2 lg:order-1 opacity-0 animate-fadeInLeft">
             {/* Greeting Badge */}
             <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-full backdrop-blur-sm shadow-sm opacity-0 animate-fadeInUp delay-100">
               <Sparkles className="w-5 h-5 text-primary mr-2" />
@@ -57,13 +59,13 @@ export function HeroSection({ aboutData, cvInfo }: HeroSectionProps) {
             </div>
 
             {/* Main Heading */}
-            <div className="space-y-3 opacity-0 animate-fadeInUp delay-200">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black tracking-tight leading-tight">
-                <span className="block mb-2">Professional</span>
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] animate-gradient mb-2">
+            <div className="space-y-2 sm:space-y-3 opacity-0 animate-fadeInUp delay-200">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-tight">
+                <span className="block mb-1 sm:mb-2">Professional</span>
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] animate-gradient mb-1 sm:mb-2">
                   Perfectionalist
                 </span>
-                <span className="block text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-muted-foreground font-light">
+                <span className="block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-muted-foreground font-light">
                   & Tech Enthusiast
                 </span>
               </h1>
@@ -78,7 +80,7 @@ export function HeroSection({ aboutData, cvInfo }: HeroSectionProps) {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row lg:justify-start justify-center gap-4 pt-4 opacity-0 animate-fadeInUp delay-400">
+            <div className="flex flex-col sm:flex-row lg:justify-start justify-center gap-3 sm:gap-4 pt-2 sm:pt-4 opacity-0 animate-fadeInUp delay-400">
               <Button
                 size="lg"
                 asChild
@@ -135,9 +137,9 @@ export function HeroSection({ aboutData, cvInfo }: HeroSectionProps) {
                   "https://placehold.co/600x600/333/fff.png?text=Me"
                 }
                 alt={`Profile of ${aboutData.fullName || "User"}`}
-                width={300}
-                height={300}
-                className="rounded-full shadow-2xl object-cover aspect-square relative z-10 border-4 border-background/80 transform group-hover:scale-105 transition-all duration-500 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] 2xl:w-[32rem] 2xl:h-[32rem]"
+                width={400}
+                height={400}
+                className="rounded-full shadow-2xl object-cover aspect-square relative z-10 border-4 border-background/80 transform group-hover:scale-105 transition-all duration-500 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96"
                 priority
                 unoptimized={
                   !isLocalProfilePic &&
@@ -151,15 +153,7 @@ export function HeroSection({ aboutData, cvInfo }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 animate-fadeInUp delay-500">
-          <div className="flex flex-col items-center space-y-3">
-            <span className="text-sm text-muted-foreground font-medium">
-              Scroll to explore
-            </span>
-            <ChevronDown className="w-6 h-6 text-muted-foreground animate-bounce" />
-          </div>
-        </div>
+
       </div>
     </section>
   );

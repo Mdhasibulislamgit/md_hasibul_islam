@@ -47,12 +47,10 @@ export default async function HomePage() {
   return (
     <div className="min-h-screen bg-background text-foreground antialiased overflow-x-hidden">
       <HeroSection aboutData={aboutData} cvInfo={cvInfo} />
-      <div className="space-y-8 py-8">
-        <AboutSection aboutData={aboutData} />
-        <SkillsSection skills={keySkills} />
-        <ExperienceSection experience={recentExperience} />
-        <ContactSection />
-      </div>
+      <AboutSection aboutData={aboutData} />
+      <SkillsSection skills={keySkills} />
+      <ExperienceSection experience={recentExperience} />
+      <ContactSection />
     </div>
   );
 }

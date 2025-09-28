@@ -35,14 +35,14 @@ export function SkillGrid({
         return (
           <Card
             key={skill.id}
-            className="group p-6 lg:p-8 bg-card/60 backdrop-blur-sm border border-border/50 hover:border-primary/50 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center justify-center text-center min-h-[140px] rounded-xl relative overflow-hidden"
+            className="group p-4 sm:p-6 bg-card/60 backdrop-blur-sm border border-border/50 hover:border-primary/50 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center justify-center text-center min-h-[120px] sm:min-h-[140px] rounded-xl relative overflow-hidden"
             style={showAnimation ? {
               animationDelay: `${index * 100}ms`,
             } : undefined}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <IconComponent className="h-8 w-8 lg:h-10 lg:w-10 text-primary mb-3 transition-all duration-300 group-hover:scale-110 relative z-10" />
-            <p className="font-semibold text-foreground text-sm lg:text-base relative z-10 group-hover:text-primary transition-colors duration-300 mb-2">
+            <IconComponent className="h-6 w-6 sm:h-8 sm:w-8 text-primary mb-2 sm:mb-3 transition-all duration-300 group-hover:scale-110 relative z-10" />
+            <p className="font-semibold text-foreground text-xs sm:text-sm relative z-10 group-hover:text-primary transition-colors duration-300 mb-1 sm:mb-2">
               {skill.name}
             </p>
             {skill.proficiencyLevel && (

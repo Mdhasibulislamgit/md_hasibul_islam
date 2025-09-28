@@ -15,13 +15,13 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
   }
 
   return (
-    <GradientBackground variant="accent" intensity="medium" className="py-20">
+    <GradientBackground variant="accent" intensity="medium" className="py-8 sm:py-12 lg:py-16">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionTitle title="Professional Journey" icon={FileText} />
 
         <ExperienceCard experience={experience} variant="featured" />
 
-        <div className="mt-8 text-center">
+        <div className="mt-6 sm:mt-8 text-center">
           <Button
             asChild
             variant="ghost"

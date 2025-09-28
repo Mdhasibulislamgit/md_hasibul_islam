@@ -107,6 +107,7 @@ body {
   }
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 4rem; /* Account for navbar height */
   }
   body {
     @apply bg-background text-foreground;
@@ -247,4 +248,49 @@ body {
 
 .bg-size-200 {
   background-size: 200% 200%;
+}
+
+/* Additional responsive utilities */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Ensure text doesn't overflow on small screens */
+  h1, h2, h3, h4, h5, h6 {
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  /* Better spacing for mobile */
+  .space-y-8 > * + * {
+    margin-top: 1.5rem;
+  }
+
+  /* Improve button sizing on mobile */
+  .btn-responsive {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  /* Ensure hero content fits properly on mobile */
+  section[id="home"] {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+/* Improve text alignment and spacing */
+.text-center {
+  text-align: center;
+}
+
+/* Better responsive containers */
+@media (min-width: 640px) and (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
