@@ -34,43 +34,48 @@ export default async function AboutPage() {
 
   return (
     <div className="container mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      <div className="text-center mb-6">
-        <User className="h-16 w-16 mx-auto text-primary mb-5" />
-        <h1 className="text-4xl font-extrabold tracking-tight text-primary sm:text-5xl md:text-6xl">
-          About {fullName}
+      <div className="text-center mb-12 sm:mb-16">
+        <div className="inline-flex items-center justify-center p-3 mb-6 bg-primary/10 rounded-full">
+          <User className="h-8 w-8 text-primary" />
+        </div>
+        <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl mb-4">
+          About <span className="text-primary">{fullName}</span>
         </h1>
-
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          Passionate about building digital experiences that matter.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         {/* Left Column: Profile Picture & Quick Info */}
-        <div className="lg:col-span-1 space-y-5">
-          <Card className="shadow-xl overflow-hidden">
-            <CardContent className="p-0">
-              <div className="relative w-full aspect-[3/3] rounded-full">
+        <div className="lg:col-span-4 space-y-8 lg:sticky lg:top-24">
+          <div className="relative group mx-auto max-w-sm">
+             <div className="absolute -inset-1 bg-gradient-to-tr from-primary to-accent rounded-full blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+             <div className="relative aspect-square rounded-full border-4 border-background shadow-2xl overflow-hidden">
                 {profilePictureUrl ? (
                   <Image
                     src={profilePictureUrl}
                     alt={`Profile picture of ${fullName}`}
                     fill
                     style={{ objectFit: "cover" }}
-                    className="object-cover w-full h-full"
-                    data-ai-hint="professional portrait person"
+                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                     priority={true}
                     unoptimized={!isLocalProfilePic && profilePictureUrl.includes('placehold.co')}
                   />
                 ) : (
-                  <div className="w-full h-full bg-gray-200 rounded-full flex items-center justify-center">
-                    <User className="h-16 w-16 text-gray-400" />
+                  <div className="w-full h-full bg-muted flex items-center justify-center">
+                    <User className="h-24 w-24 text-muted-foreground" />
                   </div>
                 )}
-              </div>
-            </CardContent>
-          </Card>
+             </div>
+          </div>
 
-          <Card className="shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-xl flex items-center"><MapPin className="mr-2 h-5 w-5 text-primary" /> Location</CardTitle>
+          <Card className="shadow-md border-border/50 backdrop-blur-sm bg-card/50">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-lg font-semibold flex items-center">
+                <MapPin className="mr-2 h-5 w-5 text-primary" /> 
+                Based in
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">{origin.city}, {origin.country}</p>
@@ -78,95 +83,86 @@ export default async function AboutPage() {
           </Card>
 
           {socialLinks && socialLinks.length > 0 && (
-            <Card className="shadow-lg">
-              <CardHeader>
-                <CardTitle className="text-xl flex items-center">
-                  <Link2 className="mr-2 h-5 w-5 text-primary" /> Connect With Me
+            <Card className="shadow-md border-border/50 backdrop-blur-sm bg-card/50">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-lg font-semibold flex items-center">
+                  <Link2 className="mr-2 h-5 w-5 text-primary" /> 
+                  Connect
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <TooltipProvider>
-                  <div className="flex space-x-3">
-                    {socialLinks.map((link) => {
-                      const IconComponent = (link.iconName && LucideIcons[link.iconName as keyof typeof LucideIcons])
-                        ? LucideIcons[link.iconName as keyof typeof LucideIcons] as LucideIcon
-                        : Link2;
-                      return (
-                        <Tooltip key={link.id}>
-                          <TooltipTrigger asChild>
-                            <Button variant="outline" size="icon" asChild>
-                              <Link href={link.url} target="_blank" rel="noopener noreferrer" aria-label={`Connect on ${link.platform}`}>
-                                <IconComponent className="h-5 w-5" />
-                              </Link>
-                            </Button>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p>{link.platform}</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      );
-                    })}
-                  </div>
-                </TooltipProvider>
+                <div className="flex flex-wrap gap-2">
+                  {socialLinks.map((link) => {
+                    const IconComponent = (link.iconName && LucideIcons[link.iconName as keyof typeof LucideIcons])
+                      ? LucideIcons[link.iconName as keyof typeof LucideIcons] as LucideIcon
+                      : Link2;
+                    return (
+                        <Button key={link.id} variant="outline" size="sm" asChild className="rounded-full hover:border-primary hover:text-primary transition-colors">
+                          <Link href={link.url} target="_blank" rel="noopener noreferrer" aria-label={`Connect on ${link.platform}`} className="flex items-center gap-2">
+                            <IconComponent className="h-4 w-4" />
+                            <span>{link.platform}</span>
+                          </Link>
+                        </Button>
+                    );
+                  })}
+                </div>
               </CardContent>
             </Card>
           )}
         </div>
 
         {/* Right Column: Bio, Values, Education */}
-        <div className="lg:col-span-2 space-y-8">
-          <Card className="shadow-xl">
-            <CardHeader>
-              <CardTitle className="text-2xl font-semibold text-primary">My Story</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-muted-foreground text-base leading-relaxed">
+        <div className="lg:col-span-8 space-y-10">
+          <section className="space-y-6">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent inline-block">My Story</h2>
+            <div className="prose prose-lg dark:prose-invert text-muted-foreground leading-relaxed">
               {bioParagraphs.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
+                <p key={index} className="mb-4 text-lg">{paragraph}</p>
               ))}
-            </CardContent>
-          </Card>
+            </div>
+          </section>
 
           {personalValues && personalValues.length > 0 && (
-            <Card className="shadow-lg">
-              <CardHeader>
-                <CardTitle className="text-xl font-semibold text-primary">Core Values</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-muted-foreground">
+             <section className="space-y-6">
+                <h2 className="text-2xl font-bold text-foreground">Core Values</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {personalValues.map((value, index) => (
-                    <li key={index} className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                      <span>{value}</span>
-                    </li>
+                    <div key={index} className="flex items-center p-4 rounded-xl bg-card border border-border/50 shadow-sm hover:shadow-md transition-all">
+                      <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+                         <CheckCircle className="h-5 w-5 text-primary" />
+                      </div>
+                      <span className="font-medium">{value}</span>
+                    </div>
                   ))}
-                </ul>
-              </CardContent>
-            </Card>
+                </div>
+             </section>
           )}
 
           {educationHistory && educationHistory.length > 0 && (
-            <Card className="shadow-lg">
-              <CardHeader>
-                <CardTitle className="text-xl font-semibold text-primary">Educational Background</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
+            <section className="space-y-6">
+              <h2 className="text-2xl font-bold text-foreground">Education</h2>
+              <div className="space-y-4">
                 {educationHistory.map((edu) => {
                   const IconComponent = (edu.iconName && LucideIcons[edu.iconName as keyof typeof LucideIcons])
                     ? LucideIcons[edu.iconName as keyof typeof LucideIcons] as LucideIcon
                     : GraduationCap;
                   return (
-                    <div key={edu.id} className="flex items-start gap-4 p-3 border rounded-md bg-muted/30">
-                      <IconComponent className="h-8 w-8 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-medium text-foreground">{edu.degree}</h4>
-                        <p className="text-sm text-muted-foreground">{edu.institution}</p>
-                        <p className="text-xs text-muted-foreground">{edu.duration}</p>
-                      </div>
+                    <div key={edu.id} className="relative pl-8 before:absolute before:left-3 before:top-8 before:bottom-0 before:w-px before:bg-border last:before:hidden">
+                       <div className="absolute left-0 top-1 h-6 w-6 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+                          <IconComponent className="h-3 w-3 text-primary" />
+                       </div>
+                       <Card className="border-none shadow-none bg-transparent">
+                         <CardContent className="p-0 pl-2">
+                            <h4 className="text-xl font-semibold text-foreground">{edu.degree}</h4>
+                            <p className="text-primary font-medium">{edu.institution}</p>
+                            <p className="text-sm text-muted-foreground mt-1">{edu.duration}</p>
+                         </CardContent>
+                       </Card>
                     </div>
                   );
                 })}
-              </CardContent>
-            </Card>
+              </div>
+            </section>
           )}
         </div>
       </div>

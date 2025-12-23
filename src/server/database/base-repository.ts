@@ -28,7 +28,7 @@ export abstract class BaseRepository<T extends BaseEntity> {
   async findById(id: string): Promise<T | null> {
     try {
       const collection = await this.getCollection();
-      const doc = await collection.findOne({ _id: new ObjectId(id) } as Filter<Omit<T, 'id'> & MongoEntity>);
+      const doc = await collection.findOne({ _id: new ObjectId(id) } as any);
       return doc ? fromMongoDocument(doc) as unknown as T : null;
     } catch (error) {
       console.error(`Error finding document by id ${id}:`, error);
@@ -90,7 +90,7 @@ export abstract class BaseRepository<T extends BaseEntity> {
       };
 
       const result = await collection.updateOne(
-        { _id: new ObjectId(id) } as Filter<Omit<T, 'id'> & MongoEntity>,
+        { _id: new ObjectId(id) } as any,
         updateDoc
       );
 
@@ -107,7 +107,7 @@ export abstract class BaseRepository<T extends BaseEntity> {
   async delete(id: string): Promise<boolean> {
     try {
       const collection = await this.getCollection();
-      const result = await collection.deleteOne({ _id: new ObjectId(id) } as Filter<Omit<T, 'id'> & MongoEntity>);
+      const result = await collection.deleteOne({ _id: new ObjectId(id) } as any);
       return result.deletedCount > 0;
     } catch (error) {
       console.error(`Error deleting document ${id}:`, error);

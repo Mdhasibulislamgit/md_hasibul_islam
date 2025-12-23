@@ -1,12 +1,15 @@
-import withPWA from 'next-pwa';
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    serverActions: {
-      bodySizeLimit: '2mb',
-    },
+  // Disable symlinks to fix Windows permissions issue with Turbopack
+  webpack: (config: any) => {
+    config.resolve.symlinks = false;
+    return config;
+  },
+  // Configure Turbopack root directory to avoid lockfile warnings
+  // Configure Turbopack root directory to avoid lockfile warnings
+  turbopack: {
+    root: __dirname,
   },
   images: {
     remotePatterns: [
@@ -24,17 +27,6 @@ const nextConfig = {
       }
     ],
   },
-  webpack: (config: any) => {
-    config.resolve.fallback = {
-      "crypto": false
-    };
-    return config;
-  }
 };
 
-export default withPWA({
-  dest: 'public',
-  register: true,
-  skipWaiting: true,
-  disable: process.env.NODE_ENV === 'development',
-})(nextConfig);
+export default nextConfig;
